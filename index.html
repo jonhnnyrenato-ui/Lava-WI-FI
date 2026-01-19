@@ -6,82 +6,79 @@
 <title>Lavaê Wi-Fi</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #0b2a55;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b2a55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .container {
-        background: #ffffff;
-        width: 90%;
-        max-width: 360px;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        text-align: center;
-    }
+.container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 360px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;
+}
 
-    .title {
-        font-size: 34px;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #0b2a55;
-    }
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0b2a55;
+}
 
-    .title .e-orange {
-        color: #ff7a00;
-    }
+.title .e-orange {
+    color: #ff7a00;
+}
 
-    .wifi-title {
-        font-size: 18px;
-        color: #0b2a55;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
+.wifi-title {
+    font-size: 18px;
+    color: #0b2a55;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
 
-    form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-    input {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #ff7a00;
-        border: none;
-        border-radius: 6px;
-        color: #ffffff;
-        font-size: 16px;
-        cursor: pointer;
-    }
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff7a00;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    button:hover {
-        background: #e66d00;
-    }
+button:hover {
+    background: #e66d00;
+}
 
-    .terms {
-        margin-top: 15px;
-        font-size: 12px;
-        color: #555;
-        text-align: center;
-    }
+.terms {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
 </style>
 </head>
 
@@ -97,46 +94,24 @@
         Wi-Fi
     </div>
 
-<form 
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
-  method="POST"
-  target="_self"
->
+    <!-- FORMULÁRIO CORRETO -->
+    <form
+      action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
+      method="POST"
+      target="_self"
+    >
 
-  <!-- NOME COMPLETO -->
-  <input
-    type="text"
-    name="entry.983851513"
-    placeholder="Nome completo"
-    required
-    oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')"
-  >
-
-  <!-- WHATSAPP -->
-  <input
-    type="tel"
-    name="entry.1159317823"
-    placeholder="WhatsApp (somente números)"
-    required
-    maxlength="11"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-  >
-
-  <button type="submit">Conectar</button>
-</form>
-
-
-        <!-- SOMENTE LETRAS -->
-        <input 
+        <input
             type="text"
+            name="entry.983851513"
             placeholder="Nome completo"
             required
             oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')"
         >
 
-        <!-- SOMENTE NÚMEROS -->
-        <input 
+        <input
             type="tel"
+            name="entry.1159317823"
             placeholder="WhatsApp (somente números)"
             required
             maxlength="11"
@@ -144,6 +119,7 @@
         >
 
         <button type="submit">Conectar</button>
+
     </form>
 
     <div class="terms">
