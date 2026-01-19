@@ -97,7 +97,33 @@
         Wi-Fi
     </div>
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse" method="POST">
+<form 
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
+  method="POST"
+  target="_self"
+>
+
+  <!-- NOME COMPLETO -->
+  <input
+    type="text"
+    name="entry.983851513"
+    placeholder="Nome completo"
+    required
+    oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')"
+  >
+
+  <!-- WHATSAPP -->
+  <input
+    type="tel"
+    name="entry.1159317823"
+    placeholder="WhatsApp (somente números)"
+    required
+    maxlength="11"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+  >
+
+  <button type="submit">Conectar</button>
+</form>
 
 
         <!-- SOMENTE LETRAS -->
