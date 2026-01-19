@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavaê Wi-Fi</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #0b2a55;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: #ffffff;
+        width: 90%;
+        max-width: 360px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    .title {
+        font-size: 34px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #0b2a55;
+    }
+
+    .title .e-orange {
+        color: #ff7a00;
+    }
+
+    .wifi-title {
+        font-size: 18px;
+        color: #0b2a55;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #ff7a00;
+        border: none;
+        border-radius: 6px;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #e66d00;
+    }
+
+    .terms {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #555;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">
+        Lava<span class="e-orange">ê</span>
+    </div>
+
+    <div class="wifi-title">
+        Wi-Fi
+    </div>
+
+    <form>
+
+        <!-- SOMENTE LETRAS -->
+        <input 
+            type="text"
+            placeholder="Nome completo"
+            required
+            oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')"
+        >
+
+        <!-- SOMENTE NÚMEROS -->
+        <input 
+            type="tel"
+            placeholder="WhatsApp (somente números)"
+            required
+            maxlength="11"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+        >
+
+        <button type="submit">Conectar</button>
+    </form>
+
+    <div class="terms">
+        Ao acessar, você concorda com os termos de uso do Wi-Fi Lavaê
+    </div>
+
+</div>
+
+</body>
+</html>
