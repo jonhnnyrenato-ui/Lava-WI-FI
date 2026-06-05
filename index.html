@@ -8,100 +8,90 @@
 <title>Lavaê Wi-Fi</title>
 
 <style>
-
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background-color:#0b2a55;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b2a55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.container{
-    background:#ffffff;
-    width:90%;
-    max-width:360px;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-    text-align:center;
+.container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 360px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;
 }
 
-.title{
-    font-size:34px;
-    font-weight:bold;
-    margin-bottom:5px;
-    color:#0b2a55;
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0b2a55;
 }
 
-.e-orange{
-    color:#ff7a00;
+.e-orange {
+    color: #ff7a00;
 }
 
-.wifi-title{
-    font-size:18px;
-    color:#0b2a55;
-    margin-bottom:20px;
-    font-weight:bold;
+.wifi-title {
+    font-size: 18px;
+    color: #0b2a55;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-form{
-    width:100%;
-    display:flex;
-    flex-direction:column;
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin-bottom:12px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:14px;
-    box-sizing:border-box;
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    background:#ff7a00;
-    border:none;
-    border-radius:6px;
-    color:#ffffff;
-    font-size:16px;
-    cursor:pointer;
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff7a00;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-button:hover{
-    background:#e66d00;
+button:hover {
+    background: #e66d00;
 }
 
-.terms{
-    margin-top:15px;
-    font-size:12px;
-    color:#555;
+.terms {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
 }
 
-.success{
-    display:none;
-    margin-top:15px;
-    padding:12px;
-    background:#e8f7e8;
-    border:1px solid #9fd49f;
-    border-radius:6px;
-    color:#2d6a2d;
-    font-size:14px;
+#mensagem {
+    display: none;
+    margin-top: 15px;
+    padding: 10px;
+    background: #e8f7e8;
+    color: #1f6b1f;
+    border-radius: 6px;
+    font-size: 14px;
 }
-
-.loading{
-    display:none;
-    margin-top:10px;
-    color:#0b2a55;
-    font-size:13px;
-}
-
 </style>
 </head>
 
@@ -117,11 +107,7 @@ button:hover{
         Wi-Fi
     </div>
 
-    <form
-        id="wifiForm"
-        action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
-        method="POST"
-    >
+    <form id="wifiForm">
 
         <input
             type="text"
@@ -146,13 +132,9 @@ button:hover{
 
     </form>
 
-    <div class="loading" id="loading">
-        Enviando cadastro...
-    </div>
-
-    <div class="success" id="success">
+    <div id="mensagem">
         ✅ Cadastro realizado com sucesso!<br>
-        Liberando acesso à internet...
+        Conectando...
     </div>
 
     <div class="terms">
@@ -163,42 +145,46 @@ button:hover{
 
 <script>
 
-const form = document.getElementById("wifiForm");
+const FORM_URL =
+"https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse";
 
-form.addEventListener("submit", async function(e){
+document.addEventListener("DOMContentLoaded", function(){
 
-    e.preventDefault();
+    const form = document.getElementById("wifiForm");
 
-    document.getElementById("loading").style.display = "block";
+    form.addEventListener("submit", async function(e){
 
-    try{
+        e.preventDefault();
 
-        await fetch(form.action,{
-            method:"POST",
-            mode:"no-cors",
-            body:new FormData(form)
-        });
+        const dados = new FormData(form);
 
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("success").style.display = "block";
+        try {
 
-        form.reset();
+            await fetch(FORM_URL, {
+                method: "POST",
+                mode: "no-cors",
+                body: dados
+            });
 
-        setTimeout(function(){
+            document.getElementById("mensagem").style.display = "block";
 
-            window.location.href = "https://www.google.com";
+            form.reset();
 
-        },2000);
+            setTimeout(function(){
 
-    }catch(error){
+                window.location.replace("https://www.google.com");
 
-        document.getElementById("loading").style.display = "none";
+            }, 2000);
 
-        alert("Erro ao enviar cadastro. Tente novamente.");
+        } catch(err){
 
-        console.error(error);
+            alert("Erro ao enviar cadastro. Tente novamente.");
 
-    }
+            console.error(err);
+
+        }
+
+    });
 
 });
 
