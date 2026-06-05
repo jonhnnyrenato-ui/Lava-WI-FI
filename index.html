@@ -118,7 +118,13 @@ button:hover {
           maxlength="11"
           oninput="this.value=this.value.replace(/[^0-9]/g,'')"
         >
-
+<script>
+document.querySelector("form").addEventListener("submit", function() {
+    setTimeout(function(){
+        window.location.href = "https://www.google.com";
+    }, 2000);
+});
+</script>
         <button type="submit">Conectar</button>
 
     </form>
