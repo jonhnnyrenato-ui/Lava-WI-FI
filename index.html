@@ -1,84 +1,107 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lavaê Wi-Fi</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #0b2a55;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#0b2a55;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
-.container {
-    background: #ffffff;
-    width: 90%;
-    max-width: 360px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    text-align: center;
+.container{
+    background:#ffffff;
+    width:90%;
+    max-width:360px;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    text-align:center;
 }
 
-.title {
-    font-size: 34px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #0b2a55;
+.title{
+    font-size:34px;
+    font-weight:bold;
+    margin-bottom:5px;
+    color:#0b2a55;
 }
 
-.title .e-orange {
-    color: #ff7a00;
+.e-orange{
+    color:#ff7a00;
 }
 
-.wifi-title {
-    font-size: 18px;
-    color: #0b2a55;
-    margin-bottom: 20px;
-    font-weight: bold;
+.wifi-title{
+    font-size:18px;
+    color:#0b2a55;
+    margin-bottom:20px;
+    font-weight:bold;
 }
 
-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+form{
+    width:100%;
+    display:flex;
+    flex-direction:column;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+    box-sizing:border-box;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #ff7a00;
-    border: none;
-    border-radius: 6px;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
+button{
+    width:100%;
+    padding:12px;
+    background:#ff7a00;
+    border:none;
+    border-radius:6px;
+    color:#ffffff;
+    font-size:16px;
+    cursor:pointer;
 }
 
-button:hover {
-    background: #e66d00;
+button:hover{
+    background:#e66d00;
 }
 
-.terms {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #555;
+.terms{
+    margin-top:15px;
+    font-size:12px;
+    color:#555;
 }
+
+.success{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background:#e8f7e8;
+    border:1px solid #9fd49f;
+    border-radius:6px;
+    color:#2d6a2d;
+    font-size:14px;
+}
+
+.loading{
+    display:none;
+    margin-top:10px;
+    color:#0b2a55;
+    font-size:13px;
+}
+
 </style>
 </head>
 
@@ -94,46 +117,93 @@ button:hover {
         Wi-Fi
     </div>
 
-    <!-- FORMULÁRIO CORRETO -->
     <form
-      action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
-      method="POST"
+        id="wifiForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdCDRGBJj06NdDsW6LxSvoe9_ZiYbNnlkVtPw02iKNnamoVwg/formResponse"
+        method="POST"
     >
 
-        <!-- NOME (somente letras) -->
         <input
-          type="text"
-          name="entry.983851513"
-          placeholder="Nome completo"
-          required
-          oninput="this.value=this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g,'')"
+            type="text"
+            name="entry.983851513"
+            placeholder="Nome completo"
+            required
+            oninput="this.value=this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g,'')"
         >
 
-        <!-- WHATSAPP (somente números) -->
         <input
-          type="tel"
-          name="entry.1159317823"
-          placeholder="WhatsApp (somente números)"
-          required
-          maxlength="11"
-          oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+            type="tel"
+            name="entry.1159317823"
+            placeholder="WhatsApp (somente números)"
+            required
+            maxlength="11"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'')"
         >
-<script>
-document.querySelector("form").addEventListener("submit", function() {
-    setTimeout(function(){
-        window.location.href = "https://www.google.com";
-    }, 2000);
-});
-</script>
-        <button type="submit">Conectar</button>
+
+        <button type="submit">
+            Conectar
+        </button>
 
     </form>
 
+    <div class="loading" id="loading">
+        Enviando cadastro...
+    </div>
+
+    <div class="success" id="success">
+        ✅ Cadastro realizado com sucesso!<br>
+        Liberando acesso à internet...
+    </div>
+
     <div class="terms">
-        Ao acessar, você concorda com os termos de uso do Wi-Fi Lavaê
+        Ao acessar, você concorda com os termos de uso do Wi-Fi Lavaê.
     </div>
 
 </div>
 
+<script>
+
+const form = document.getElementById("wifiForm");
+
+form.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    document.getElementById("loading").style.display = "block";
+
+    try{
+
+        await fetch(form.action,{
+            method:"POST",
+            mode:"no-cors",
+            body:new FormData(form)
+        });
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("success").style.display = "block";
+
+        form.reset();
+
+        setTimeout(function(){
+
+            window.location.href = "https://www.google.com";
+
+        },2000);
+
+    }catch(error){
+
+        document.getElementById("loading").style.display = "none";
+
+        alert("Erro ao enviar cadastro. Tente novamente.");
+
+        console.error(error);
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
+```
